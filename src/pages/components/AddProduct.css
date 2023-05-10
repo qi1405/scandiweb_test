@@ -1,0 +1,40 @@
+.form-inline {
+    display: flex;
+    flex-direction: column;
+    flex-flow: column;
+}
+
+.form-inline label {
+    display: inline-block;
+    vertical-align: middle;
+    float: left;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+}
+
+.form-inline input {
+    float: right;
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.form-inline select {
+    padding: 10px;
+}
+
+.form-inline p {
+}
+
+.form-inline button {
+    padding: 10px 20px;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+}
+
+.form-inline button:hover {
+    background-color: royalblue;
+}
