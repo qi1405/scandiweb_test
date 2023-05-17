@@ -64,7 +64,7 @@ const Products = () => {
                     className="button"
                     style={{ marginBottom: "0.6rem", marginRight: "45%", marginLeft: "45%", width: "10" }}
                 >
-                    MASS DELETE
+                    Mass Delete
                 </button>
                 {/*<input type="checkbox"*/}
                 {/*       name="allselect"*/}
