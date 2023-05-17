@@ -38,7 +38,7 @@ function Navbar() {
                                 : { color: "" }
                         }
                     >
-                        Add
+                        ADD
                     </NavLink>
                 </div>
                 <button onClick={() => setShowLinks(!showLinks)}>
