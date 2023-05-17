@@ -57,7 +57,7 @@ const Products = () => {
     }
 
         return (
-            <form id="#product_form">
+            <Fragment>
                 <button
                     type="button"
                     onClick={() => {handleAllDelete(); window.location.reload(false)}}
@@ -70,8 +70,9 @@ const Products = () => {
                 {/*       name="allselect"*/}
                 {/*       checked= { !userData.some( (user)=>user?.isChecked!==true)}*/}
                 {/*       onChange={ handleChange}  />*/}
+
                 { userData.map((getProduct, key) => (
-                    <div className="product" key={getProduct.id}>
+                    <div id="#product_form" className="product" key={getProduct.id}>
                         <div className="delete-checkbox" style={{color: 'white'}}>
                                 <input
                                     type="checkbox"
@@ -91,7 +92,7 @@ const Products = () => {
                         <div id="#price">
                             {getProduct.price + " $"}
                         </div>
-                        <div id="#type">
+                        <div id="#productType">
                             {getProduct.type}
                         </div>
                         <div id="#productType">
@@ -106,7 +107,8 @@ const Products = () => {
                     </div>
                 ))
                 }
-            </form>
+
+            </Fragment>
         )
     }
 
