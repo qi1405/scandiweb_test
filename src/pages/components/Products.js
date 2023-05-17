@@ -57,14 +57,14 @@ const Products = () => {
     }
 
         return (
-            <Fragment>
+            <form id="#product_form">
                 <button
                     type="button"
                     onClick={() => {handleAllDelete(); window.location.reload(false)}}
                     className="button"
                     style={{ marginBottom: "0.6rem", marginRight: "45%", marginLeft: "45%", width: "10" }}
                 >
-                    MASS DELETE
+                    Mass Delete
                 </button>
                 {/*<input type="checkbox"*/}
                 {/*       name="allselect"*/}
@@ -80,21 +80,21 @@ const Products = () => {
                                     onChange={ handleChange }
                                 />
                         </div>
-                        <div>
+                        <div id="#sku">
                             {getProduct.sku}
 
                         </div>
-                        <div>
+                        <div id="#name">
                             {getProduct.name}
 
                         </div>
-                        <div>
+                        <div id="#price">
                             {getProduct.price + " $"}
                         </div>
-                        <div>
+                        <div id="#type">
                             {getProduct.type}
                         </div>
-                        <div>
+                        <div id="#productType">
                             {getProduct.type === "dvd" ? <div>
                                 {"Size: " + getProduct.size + " MB"}
                             </div> : "" || getProduct.type === "book" ? <div>
@@ -106,7 +106,7 @@ const Products = () => {
                     </div>
                 ))
                 }
-            </Fragment>
+            </form>
         )
     }
 
