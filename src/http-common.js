@@ -1,6 +1,6 @@
 import axios from "axios";
 export default axios.create({
-    baseURL: "https://scandiweb-test-dimmy.000webhostapp.com/product/",
+    baseURL: "https://bizairi-001-site1.itempurl.com/scandiweb_3/product/",
     // baseURL: "https://romedical.herokuapp.com/api",
     headers: {
         "Content-type": "application/json"
