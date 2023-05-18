@@ -109,8 +109,7 @@ function AddProduct() {
                                 <label htmlFor="size">Size (MB)</label>
                                 <input
                                     type="text"
-                                    className=""
-                                    id="#size"
+                                    id="size"
                                     value={product.size || ""}
                                     onChange={handleInputChange}
                                     name="size"
@@ -127,8 +126,7 @@ function AddProduct() {
                                 <label htmlFor="weight">Weight (KG)</label>
                                 <input
                                     type="text"
-                                    className=""
-                                    id="#weight"
+                                    id="weight"
                                     required pattern="^[0-9]+$"
                                     value={product.weight || ""}
                                     onChange={handleInputChange}
@@ -145,8 +143,7 @@ function AddProduct() {
                                 <label htmlFor="height">Height (CM)</label>
                                 <input
                                     type="text"
-                                    className=""
-                                    id="#height"
+                                    id="height"
                                     required pattern="^[0-9]+$"
                                     value={product.height || ""}
                                     onChange={handleInputChange}
@@ -157,8 +154,7 @@ function AddProduct() {
                                 <label htmlFor="width">Width (CM)</label>
                                 <input
                                     type="text"
-                                    className=""
-                                    id="#width"
+                                    id="width"
                                     required pattern="^[0-9]+$"
                                     value={product.width || ""}
                                     onChange={handleInputChange}
@@ -169,8 +165,7 @@ function AddProduct() {
                                 <label htmlFor="length">Length (CM)</label>
                                 <input
                                     type="text"
-                                    className=""
-                                    id="#length"
+                                    id="length"
                                     required pattern="^[0-9]+$"
                                     value={product.length || ""}
                                     onChange={handleInputChange}
@@ -192,13 +187,12 @@ function AddProduct() {
                 </header>
                 <div className="container">
                     <Card>
-                        <form onSubmit={handleSubmit} onChange={handleInputChange} className="form-inline" id="#product_form">
+                        <form onSubmit={handleSubmit} onChange={handleInputChange} id="product_form">
                             <div className="">
                                 <label htmlFor="sku">SKU</label>
                                 <input
                                     type="text"
-                                    className=""
-                                    id="#sku"
+                                    id="sku"
                                     required
                                     value={product.sku}
                                     onChange={handleInputChange}
@@ -210,8 +204,7 @@ function AddProduct() {
                                 <label htmlFor="name">Name</label>
                                 <input
                                     type="text"
-                                    className=""
-                                    id="#name"
+                                    id="name"
                                     required
                                     value={product.name || ""}
                                     onChange={handleInputChange}
@@ -222,8 +215,7 @@ function AddProduct() {
                                 <label htmlFor="price">Price ($)</label>
                                 <input
                                     type="text"
-                                    className=""
-                                    id="#price"
+                                    id="price"
                                     required pattern="^[0-9]+$"
                                     value={product.price || ""}
                                     onChange={handleInputChange}
@@ -232,7 +224,7 @@ function AddProduct() {
                             </div>
                             <div>
                                 <label htmlFor="type">Type Switcher</label>
-                                <select name="type" id="#productType" onClick={(event) => {
+                                <select name="type" id="productType" onClick={(event) => {
                                     setDivType(event.target.value);
                                 }} onChange={handleInputChange}>
                                     <option value="" defaultValue="selected" hidden="hidden">Choose here</option>
@@ -241,7 +233,7 @@ function AddProduct() {
                                     <option value="furniture" onChange={handleInputChange}>Furniture</option>
                                 </select>
                             </div>
-                            <div className="form-inline" id="productType">
+                            <div id="productType">
                             {GetDivType()}
                             </div>
                             <div style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
@@ -253,7 +245,6 @@ function AddProduct() {
                                     Save
                                 </button>
                                 <button
-                                    id="cancel"
                                     type="button"
                                     onClick={productPage}
                                     className="button"
