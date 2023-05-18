@@ -1,10 +1,10 @@
-.form-inline {
+#product_form {
     display: flex;
     flex-direction: column;
     flex-flow: column;
 }
 
-.form-inline label {
+label {
     display: inline-block;
     vertical-align: middle;
     float: left;
@@ -12,7 +12,7 @@
     padding: 10px;
 }
 
-.form-inline input {
+input {
     float: right;
     vertical-align: middle;
     margin: 5px 10px 5px 0;
@@ -21,20 +21,29 @@
     border: 1px solid #ddd;
 }
 
-.form-inline select {
+select {
     padding: 10px;
 }
 
-.form-inline p {
+p {
 }
 
-.form-inline button {
+#product_form button {
     padding: 10px 20px;
     background-color: dodgerblue;
     border: 1px solid #ddd;
     color: white;
 }
 
-.form-inline button:hover {
+#product_form button:hover {
     background-color: royalblue;
+}
+
+#sku{}
+#name{}
+#price{}
+#productType{
+    display: flex;
+    flex-direction: column;
+    flex-flow: column;
 }
