@@ -1,10 +1,15 @@
-.product{
-    border: 2px solid black;
-    width: 240px;
-    height: 180px;
-    padding: 15px;
-    margin-right: 10px;
-    margin-bottom: 10px;
+.delete-checkbox{
+}
+
+#delete-product-btn{
+    padding: 10px 20px;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+}
+
+#delete-product-btn:hover{
+    background-color: royalblue;
 }
 
 button {
