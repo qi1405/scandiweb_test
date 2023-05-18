@@ -61,7 +61,7 @@ const Products = () => {
                 <button
                     type="button"
                     onClick={() => {handleAllDelete(); window.location.reload(false)}}
-                    className="button"
+                    id="delete-product-btn"
                     style={{ marginBottom: "0.6rem", marginRight: "45%", marginLeft: "45%", width: "10" }}
                 >
                     MASS DELETE
@@ -72,7 +72,7 @@ const Products = () => {
                 {/*       onChange={ handleChange}  />*/}
 
                 { userData.map((getProduct, key) => (
-                    <div id="#product_form" className="product" key={getProduct.id}>
+                    <div id="product_form" key={getProduct.id}>
                         <div className="delete-checkbox" style={{color: 'white'}}>
                                 <input
                                     type="checkbox"
@@ -81,24 +81,24 @@ const Products = () => {
                                     onChange={ handleChange }
                                 />
                         </div>
-                        <div id="#sku">
+                        <div id="sku">
                             {getProduct.sku}
 
                         </div>
-                        <div id="#name">
+                        <div id="name">
                             {getProduct.name}
 
                         </div>
-                        <div id="#price">
+                        <div id="price">
                             {getProduct.price + " $"}
                         </div>
-                        <div id="#productType">
+                        <div id="productType">
                             {getProduct.type}
                         </div>
-                        <div id="#productType">
-                            {getProduct.type === "dvd" ? <div>
+                        <div>
+                            {getProduct.type === "dvd" ? <div id="size">
                                 {"Size: " + getProduct.size + " MB"}
-                            </div> : "" || getProduct.type === "book" ? <div>
+                            </div> : "" || getProduct.type === "book" ? <div id="weight">
                                     {"Weight: " + getProduct.weight + " KG"}
                                 </div> : "" || getProduct.type === "furniture" ? <div>
                                 {"Dimension: " + getProduct.height + "x" + getProduct.width + "x" + getProduct.length}
