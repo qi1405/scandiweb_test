@@ -72,7 +72,7 @@ const Products = () => {
                 {/*       onChange={ handleChange}  />*/}
 
                 { userData.map((getProduct, key) => (
-                    <div id="product_form" key={getProduct.id}>
+                    <div className="product" key={getProduct.id}>
                         <div className="delete-checkbox" style={{color: 'white'}}>
                                 <input
                                     type="checkbox"
@@ -81,24 +81,24 @@ const Products = () => {
                                     onChange={ handleChange }
                                 />
                         </div>
-                        <div id="sku">
+                        <div>
                             {getProduct.sku}
 
                         </div>
-                        <div id="name">
+                        <div>
                             {getProduct.name}
 
                         </div>
-                        <div id="price">
+                        <div>
                             {getProduct.price + " $"}
                         </div>
-                        <div id="productType">
+                        <div>
                             {getProduct.type}
                         </div>
                         <div>
-                            {getProduct.type === "dvd" ? <div id="size">
+                            {getProduct.type === "dvd" ? <div>
                                 {"Size: " + getProduct.size + " MB"}
-                            </div> : "" || getProduct.type === "book" ? <div id="weight">
+                            </div> : "" || getProduct.type === "book" ? <div>
                                     {"Weight: " + getProduct.weight + " KG"}
                                 </div> : "" || getProduct.type === "furniture" ? <div>
                                 {"Dimension: " + getProduct.height + "x" + getProduct.width + "x" + getProduct.length}
