@@ -51,7 +51,7 @@ const Products = () => {
             // return;
         }
         console.log(JSON.stringify(checkedInputValue))
-        const response = await axios.post('https://scandiweb-test-dimmy.000webhostapp.com/product/delete_records.php', JSON.stringify(checkedInputValue))
+        const response = await axios.post('https://ecoliving2022-001-site1.btempurl.com/scandiweb/product/delete_records.php', JSON.stringify(checkedInputValue))
         // const response = await fetch('http://localhost/scandiweb/product/delete_records.php', JSON.stringify(checkedInputValue))
         console.log(response)
     }
