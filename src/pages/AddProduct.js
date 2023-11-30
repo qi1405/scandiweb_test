@@ -79,8 +79,13 @@ function AddProduct() {
         }
     };
 
+    function refreshPage() {
+        window.location.reload(false);
+    }
+
     const productPage = () => {
-        navigate("/")
+        navigate("/");
+        refreshPage();
     }
 
     function handleSubmit(event) {
