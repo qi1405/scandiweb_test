@@ -1,20 +1,22 @@
 import http from "../http-common";
 
 const getAllProducts = () => {
-    return http.get("read.php");
+    return http.get("/index.php");
 };
 
 const createProduct = data => {
-    return http.post("/create.php", data);
+    return http.post("/index.php", data);
+};
+
+const deleteProductsByIds = productIds => {
+    const productIdsString = Array.isArray(productIds) ? productIds.join(',') : productIds;
+    return http.delete("/index.php", { params: { ids: productIdsString } });
 };
 
 const ProductDataService = {
     getAllProducts,
-    // getPatientById,
     createProduct,
-    // updatePatient,
-    // removePatient,
-    // findByName
+    deleteProductsByIds
 };
 
 export default ProductDataService;

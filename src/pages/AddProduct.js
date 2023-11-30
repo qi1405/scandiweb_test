@@ -1,13 +1,12 @@
-import React, {useCallback, useEffect, useState, Fragment} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import Card from "../UI/Card";
 import "./components/AddProduct.css";
 import {createProduct, retrieveProducts} from "../slices/products";
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
+
 
 function AddProduct() {
-    // const [userData, setUserData] = useState([]);
     const items = useSelector(state => state.products);
     const dispatch1 = useDispatch();
     const [invalidData, setInvalidData] = useState(true);
@@ -80,10 +79,6 @@ function AddProduct() {
         }
     };
 
-    // function checkSku() {
-    //
-    // }
-
     const productPage = () => {
         navigate("/")
     }
@@ -96,13 +91,14 @@ function AddProduct() {
         }else{
             // alert("data is ok, submit")
             saveProduct();
+            dispatch1(retrieveProducts());
             productPage();
         }
     }
 
         const GetDivType = () => {
             switch (divType) {
-                case "dvd":
+                case "Electronics":
                     return (
                         <>
                             <div className="">
@@ -119,7 +115,7 @@ function AddProduct() {
                             <p>Please provide size in MB format.</p>
                         </>
                     );
-                case "book":
+                case "Book":
                     return (
                         <>
                             <div className="">
@@ -136,7 +132,7 @@ function AddProduct() {
                             <p>Please provide weight in KG format.</p>
                         </>
                     );
-                case "furniture":
+                case "Furniture":
                     return (
                         <>
                             <div className="">
@@ -182,9 +178,9 @@ function AddProduct() {
 
         return (
             <div className="App">
-                <header className="header">
-                    <p>Add Product page!</p>
-                </header>
+                {/*<header className="header">*/}
+                {/*    <p>Add Product page!</p>*/}
+                {/*</header>*/}
                 <div className="container">
                     <Card>
                         <form onSubmit={handleSubmit} onChange={handleInputChange} id="product_form">
@@ -228,9 +224,9 @@ function AddProduct() {
                                     setDivType(event.target.value);
                                 }} onChange={handleInputChange}>
                                     <option value="" defaultValue="selected" hidden="hidden">Choose here</option>
-                                    <option value="dvd" onChange={handleInputChange}>DVD</option>
-                                    <option value="book" onChange={handleInputChange}>Book</option>
-                                    <option value="furniture" onChange={handleInputChange}>Furniture</option>
+                                    <option value="Electronics" onChange={handleInputChange}>DVD</option>
+                                    <option value="Book" onChange={handleInputChange}>Book</option>
+                                    <option value="Furniture" onChange={handleInputChange}>Furniture</option>
                                 </select>
                             </div>
                             <div id="productType">

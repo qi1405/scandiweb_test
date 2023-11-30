@@ -11,14 +11,19 @@
 }
 
 #delete-product-btn{
+    display: inline-block;
     padding: 10px 20px;
-    background-color: dodgerblue;
-    border: 1px solid #ddd;
-    color: white;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
 }
 
+/* Change the button style on hover */
 #delete-product-btn:hover{
-    background-color: royalblue;
+    background-color: black;
+    color: white;
 }
 
 button {

@@ -19,17 +19,44 @@ export const retrieveProducts = createAsyncThunk(
     }
 );
 
+export const deleteProducts = createAsyncThunk(
+    "products/delete",
+    async (productIds) => {
+        try {
+            const res = await ProductDataService.deleteProductsByIds(productIds);
+            // success message
+            return { success: res.data.success };
+        } catch (error) {
+            // error message
+            return { error: error.message };
+        }
+    }
+);
 
 const productSlice = createSlice({
-    name: "products",
+    name: 'products',
     initialState,
-    extraReducers: {
-        [createProduct.fulfilled]: (state, action) => {
-            state.push(action.payload);
-        },
-        [retrieveProducts.fulfilled]: (state, action) => {
-            return [...action.payload];
-        },
+    reducers: {
+        // Define other reducers if needed
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(createProduct.fulfilled, (state, action) => {
+                state.push(action.payload);
+            })
+            .addCase(retrieveProducts.fulfilled, (state, action) => {
+                return action.payload.data;
+            })
+            .addCase(deleteProducts.fulfilled, (state, action) => {
+                // Assuming your API returns a success message or updated product list
+                console.log("Products deleted successfully:", action.payload);
+                // Optionally, refresh the product list or show a success message
+                return action.payload.data;
+            })
+            .addCase(deleteProducts.rejected, (state, action) => {
+                // Handle the rejected case, e.g., log the error
+                console.error("Error deleting products:", action.error.message);
+            });
     },
 });
 

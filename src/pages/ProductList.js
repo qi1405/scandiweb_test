@@ -7,9 +7,9 @@ function ProductList() {
 
     return(
         <div className="App">
-        <header className="header">
-            <p>Product Page</p>
-        </header>
+        {/*<header className="header">*/}
+        {/*    <p>Product Page</p>*/}
+        {/*</header>*/}
         <div className="container">
             <Card>
                 <Products />

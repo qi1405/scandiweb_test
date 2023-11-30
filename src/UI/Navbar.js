@@ -1,41 +1,50 @@
 import "./Navbar.css";
-import { NavLink, Link } from "react-router-dom";
-import { useState } from "react";
-import { Reorder } from "@material-ui/icons";
+import {NavLink, useLocation} from "react-router-dom";
+import {useState} from "react";
+import {Reorder} from "@material-ui/icons";
 
 function Navbar() {
     const [showLinks, setShowLinks] = useState(false);
+    const location = useLocation();
 
     return (
         <div className="Navbar">
             <div className="leftSide">
-                <div className="links">
-                    <a target="_blank" href="https://scandiweb.notion.site/Junior-Developer-Test-Task-1b2184e40dea47df840b7c0cc638e61e">Scandiweb</a>
-                </div>
+                {
+                    location.pathname === "/" ?
+                        <div className="links">
+                            <p>Product List</p>
+                        </div> : location.pathname === "/add-product" ?
+                            <div className="links">
+                                <p>Product Add</p>
+                            </div> : null
+                }
             </div>
             <div className="rightSide">
                 <div className="links" id={showLinks ? "hidden" : ""}>
                     <NavLink
                         to="/"
-                        style={({ isActive }) =>
+                        style={({isActive}) =>
                             isActive
                                 ? {
-                                    color: "#61DAFB"
+                                    textDecoration: "underline",
+                                    fontWeight: "bolder"
                                 }
-                                : { color: "" }
+                                : {color: ""}
                         }
 
                     >
-                        Products
+                        PRODUCTS
                     </NavLink>
                     <NavLink
                         to="/add-product"
-                        style={({ isActive }) =>
+                        style={({isActive}) =>
                             isActive
                                 ? {
-                                    color: "#61DAFB",
+                                    textDecoration: "underline",
+                                    fontWeight: "bolder"
                                 }
-                                : { color: "" }
+                                : {color: ""}
                         }
                     >
                         ADD
@@ -43,7 +52,7 @@ function Navbar() {
                 </div>
                 <button onClick={() => setShowLinks(!showLinks)}>
                     {" "}
-                    <Reorder />{" "}
+                    <Reorder/>{" "}
                 </button>
             </div>
         </div>

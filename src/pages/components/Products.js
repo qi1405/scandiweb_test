@@ -1,13 +1,13 @@
 import React, {useEffect, useCallback, useState, Fragment} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {retrieveProducts} from "../../slices/products";
+import {deleteProducts, retrieveProducts} from "../../slices/products";
 import "./Products.css";
-import axios from "axios";
+// import axios from "axios";
 
 const Products = () => {
-    const items = useSelector(state => state.products);
+    const products = useSelector(state => state.products);
     const dispatch = useDispatch();
-    const [userData, setUserData] = useState([]);
+    const [selectedProductIds, setSelectedProductIds] = useState([]);
 
     const initFetch = useCallback(() => {
         dispatch(retrieveProducts());
@@ -17,91 +17,76 @@ const Products = () => {
         initFetch()
     }, [initFetch]);
 
-    useEffect(()=>{
-        setUserData(items);
-    }, [items]);
+    console.log(products);
 
-    console.log(items);
-
-    const handleChange=(e)=> {
-        const {name, checked} = e.target;
-        if (name === "allselect") {
-            const checkedValue = userData.map((user) => {
-                return {...user, isChecked: checked}
+    const handleMassDelete = () => {
+        // Dispatch the deleteProducts action with selectedProductIds
+        dispatch(deleteProducts(selectedProductIds))
+            .then(() => {
+                // Reset selectedProductIds after successful deletion
+                setSelectedProductIds([]);
+                dispatch(retrieveProducts());
+            })
+            .catch((error) => {
+                console.error("Error deleting products:", error);
+                // Handle error if needed
             });
-            console.log(checkedValue);
-            setUserData(checkedValue);
-            } else {
-                const checkedValue = userData.map((user) =>
-                    user.id.toString() === name ? {...user, isChecked: checked} : user);
-                console.log(checkedValue);
-                setUserData(checkedValue);
-            }
-        }
+    };
 
-    const handleAllDelete = async() => {
-        const checkedInputValue = [];
-        for (let i = 0; i < userData.length; i++) {
-            if (userData[i].isChecked === true) {
-                checkedInputValue.push(parseInt(userData[i].id));
+    const handleCheckboxChange = (productId) => {
+        // Toggle the selected status of the product ID
+        setSelectedProductIds((prevSelectedIds) => {
+            if (prevSelectedIds.includes(productId)) {
+                return prevSelectedIds.filter((id) => id !== productId);
+            } else {
+                return [...prevSelectedIds, productId];
             }
-            // else {
-            //     alert("Please select at least one checkbox");
-            // }
-            // return;
-        }
-        console.log(JSON.stringify(checkedInputValue))
-        const response = await axios.post('https://ecoliving2022-001-site1.btempurl.com/scandiweb/product/delete_records.php', JSON.stringify(checkedInputValue))
-        // const response = await fetch('http://localhost/scandiweb/product/delete_records.php', JSON.stringify(checkedInputValue))
-        console.log(response)
-    }
+        });
+    };
+
+    console.log(selectedProductIds)
 
         return (
             <Fragment>
                 <button
                     type="button"
-                    onClick={() => {handleAllDelete(); window.location.reload(false)}}
+                    onClick={handleMassDelete}
                     id="delete-product-btn"
                     style={{ marginBottom: "0.6rem", marginRight: "45%", marginLeft: "45%", width: "10" }}
                 >
                     MASS DELETE
                 </button>
-                {/*<input type="checkbox"*/}
-                {/*       name="allselect"*/}
-                {/*       checked= { !userData.some( (user)=>user?.isChecked!==true)}*/}
-                {/*       onChange={ handleChange}  />*/}
-
-                { userData.map((getProduct, key) => (
-                    <div className="product" key={getProduct.id}>
+                { products.map((product, key) => (
+                    <div className="product" key={product.id}>
                         <div className="delete-checkbox" style={{color: 'white'}}>
                                 <input
                                     type="checkbox"
-                                    name={ getProduct.id}
-                                    checked={getProduct?.isChecked || false }
-                                    onChange={ handleChange }
+                                    name={ product.id}
+                                    checked={selectedProductIds.includes(product.id)}
+                                    onChange={() => handleCheckboxChange(product.id)}
                                 />
                         </div>
                         <div>
-                            {getProduct.sku}
+                            {product.sku}
 
                         </div>
                         <div>
-                            {getProduct.name}
+                            {product.name}
 
                         </div>
                         <div>
-                            {getProduct.price + " $"}
+                            {"$" + product.price}
                         </div>
                         <div>
-                            {getProduct.type}
+                            {product.type}
                         </div>
                         <div>
-                            {getProduct.type === "dvd" ? <div>
-                                {"Size: " + getProduct.size + " MB"}
-                            </div> : "" || getProduct.type === "book" ? <div>
-                                    {"Weight: " + getProduct.weight + " KG"}
-                                </div> : "" || getProduct.type === "furniture" ? <div>
-                                {"Dimension: " + getProduct.height + "x" + getProduct.width + "x" + getProduct.length}
+                            {product.type === "Electronics" ? <div>
+                                {"Size: " + product.size + " MB"}
+                            </div> : "" || product.type === "Book" ? <div>
+                                    {"Weight: " + product.weight + " KG"}
+                                </div> : "" || product.type === "Furniture" ? <div>
+                                {"Dimensions: " + product.height + "x" + product.width + "x" + product.length}
                             </div> : ""}
                         </div>
                     </div>
