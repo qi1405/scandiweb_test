@@ -79,13 +79,13 @@ function AddProduct() {
         }
     };
 
-    function refreshPage() {
-        window.location.reload(false);
-    }
+    // function refreshPage() {
+    //     window.location.reload(false);
+    // }
 
     const productPage = () => {
         navigate("/");
-        refreshPage();
+        // refreshPage();
     }
 
     function handleSubmit(event) {
