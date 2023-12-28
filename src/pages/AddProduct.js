@@ -79,9 +79,9 @@ function AddProduct() {
         }
     };
 
-    // function refreshPage() {
-    //     window.location.reload(false);
-    // }
+    function refreshPage() {
+        window.location.reload(false);
+    }
 
     const productPage = () => {
         navigate("/");
@@ -96,8 +96,9 @@ function AddProduct() {
         }else{
             // alert("data is ok, submit")
             saveProduct();
-            dispatch1(retrieveProducts());
             productPage();
+            // dispatch1(retrieveProducts());
+            refreshPage();
         }
     }
 
