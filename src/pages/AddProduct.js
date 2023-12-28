@@ -63,6 +63,7 @@ function AddProduct() {
                     length: data.length
                 });
                 console.log(product);
+                productPage();
                 dispatch(retrieveProducts());
             })
             .catch((e) => {
@@ -97,7 +98,7 @@ function AddProduct() {
         }else{
             // alert("data is ok, submit")
             saveProduct();
-            productPage();
+            // productPage();
             // dispatch1(retrieveProducts());
             // refreshPage();
         }
