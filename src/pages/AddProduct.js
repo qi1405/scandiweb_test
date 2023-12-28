@@ -63,6 +63,7 @@ function AddProduct() {
                     length: data.length
                 });
                 console.log(product);
+                dispatch(retrieveProducts());
             })
             .catch((e) => {
                 console.log(e);
@@ -79,9 +80,9 @@ function AddProduct() {
         }
     };
 
-    function refreshPage() {
-        window.location.reload(false);
-    }
+    // function refreshPage() {
+    //     window.location.reload(false);
+    // }
 
     const productPage = () => {
         navigate("/");
@@ -98,7 +99,7 @@ function AddProduct() {
             saveProduct();
             productPage();
             // dispatch1(retrieveProducts());
-            refreshPage();
+            // refreshPage();
         }
     }
 
