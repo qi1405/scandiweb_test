@@ -99,8 +99,8 @@ function AddProduct() {
             // alert("data is ok, submit")
             saveProduct();
             // productPage();
-            // dispatch1(retrieveProducts());
             // refreshPage();
+            // dispatch1(retrieveProducts());
         }
     }
 
